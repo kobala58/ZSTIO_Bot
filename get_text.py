@@ -2,7 +2,6 @@ import requests
 import bs4
 import collections
 import webbrowser
-import mysql.connector
 
 def main():
     scraping()
@@ -19,8 +18,9 @@ def get_raw_text(url):
 
 def get_all(html):
     soup = bs4.BeautifulSoup(html, 'html.parser')
-    zast = soup.find(_class = "categorylist_header_title")
-    print(zast)
+    zast = soup.find_all('a')
+    for x in zast:
+    print(x)
 
 
 
