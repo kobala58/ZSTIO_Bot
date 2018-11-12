@@ -12,7 +12,10 @@ def main():
     html = get_zast_page(url)
     choicses = available_zast(html)
     day_url = choice_day(choicses,'https://www.zstiojar.edu.pl')
-    params = urlencode({"url": day_url, "access_key": "f626c08d073b451884f90e7477a878c7"})
+    key = open("key.txt","r")
+    key = str(key.read())
+    print(key)
+    params = urlencode({"url": day_url, key})
     urlretrieve("https://api.apiflash.com/v1/urltoimage?" + params, "screenshot.jpeg")
 
 
